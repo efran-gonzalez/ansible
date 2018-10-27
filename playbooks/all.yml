@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: test connection
+      ping: 
+
+    - name: install packages
+      yum: name={{item}} state=present
+      with_items:
+        - man
+        - man-pages
+        - bind-utils
+        - epel-release
+        - ntp
+        - htop
